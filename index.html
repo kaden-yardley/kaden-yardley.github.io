@@ -1,286 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operations Management</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: transparent;
-            text-align: center;
-            overflow-x: hidden;
-        }
-        .parallax-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; 
-            overflow: hidden;
-        }
-        .parallax {
-            background: url('https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center;
-            background-size: cover;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: transform 0.1s ease-out;
-        }
-        .title {
-            margin: 20px 0;
-            font-size: 2em;
-            color: #333;
-            position: relative;
-            z-index: 1; 
-        }
-        .card-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 20px;
-            position: relative;
-            z-index: 1; 
-        }
-        .card {
-            width: 200px;
-            height: 250px;
-            perspective: 1000px;
-            position: relative;
-        }
-        .card-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        .card:hover .card-inner {
-            transform: rotateY(180deg);
-        }
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .card-front {
-            background-color: #3498db;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .card-back {
-            background-color: #2ecc71;
-            color: white;
-            font-size: 18px;
-            transform: rotateY(180deg);
-            padding: 20px;
-            text-align: center;
-        }
-        .chart-container {
-            position: relative;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); 
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .section-title {
-            font-size: 1.5em;
-            color: #FFFFFF;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Operations Management</title>
+  <!-- Google Fonts: Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0 0 60px 0; 
+      background-color: transparent;
+      color: #ffffff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+
+    .instruction {
+      font-size: 0.9em;
+      color: #ffffff;
+      margin: 10px 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+
+    .research-button-container {
+      margin: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .research-button {
+      background-color: #3498db;
+      color: #ffffff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .research-button:hover {
+      background-color: #2980b9;
+    }
+
+    .parallax-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .parallax {
+      background: url('https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform 0.1s ease-out;
+    }
+
+    .title {
+      margin: 20px 0;
+      font-size: 2em;
+      color: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-size: 1.5em;
+      color: #ffffff;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      width: 200px;
+      height: 250px;
+      perspective: 1000px;
+      position: relative;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      box-sizing: border-box;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .card-front {
+      background-color: #3498db;
+      font-weight: bold;
+      color: #ffffff;
+      flex-direction: column;
+    }
+
+    .card-back {
+      background-color: #2ecc71;
+      transform: rotateY(180deg);
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+    }
+
+    /* Risk Card Specific Styles */
+    .card-front .risk-number {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .card-front .risk-details {
+      font-size: 0.8em;
+      line-height: 1.2;
+    }
+
+    .card-front .risk-title {
+      font-size: 0.9em;
+    }
+
+    .card-front .risk-description {
+      font-size: 0.8em;
+      margin-top: 5px;
+      color: #f0f0f0;
+    }
+
+
+    .chart-container {
+      position: relative;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 20px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-    <div class="parallax-container">
-        <div class="parallax"></div>
+
+  <div class="research-button-container">
+    <a href="https://docs.google.com/document/d/1wf9diFviu3kSE2zKgkLkjxvGQhXImZI30tKD5N7kk8w/edit?usp=sharing" target="_blank" class="research-button">
+      View Research
+    </a>
+  </div>
+
+
+  <div class="parallax-container">
+    <div class="parallax"></div>
+  </div>
+
+  <h1 class="title">Semiconductor Manufacturing Operations Facts</h1>
+
+  <div class="section-title">Semiconductor Manufacturing Process</div>
+      <p class="instruction">Scroll over cards to learn more</p>
+  <div class="card-container">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          Fab Stage 🏭
+        </div>
+        <div class="card-back">
+          <strong>Wafer Fabrication</strong>
+          This can take 4–6 weeks per wafer!
+        </div>
+      </div>
     </div>
 
-    <h1 class="title">Operations Management in Action</h1>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          Probe 🔍
+        </div>
+        <div class="card-back">
+          <strong>Probe & Sort</strong><br><br>
+          Electrical tests find defective chips<br>
+          Chips are sorted into "bins" based on performance
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          Package 📦
+        </div>
+        <div class="card-back">
+          <strong>Assembly & Packaging</strong><br><br>
+          Chips are cut, connected & protected!
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          Final Test ✅
+        </div>
+        <div class="card-back">
+          <strong>Final Testing</strong><br><br>
+          Ensures performance & reliability<br>
+          Only the best chips ship out!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Supply Chain & Risk Management</div>
+      <p class="instruction">Scroll over cards to learn more</p>
+  <div class="card-container">
+    <!-- Risk Card 1 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="risk-number">🚚 Risk #1</div>
+          <div class="risk-details">
+            <div class="risk-title"><strong>Geopolitical Tensions</strong></div>
+            <div class="risk-description">Trade restrictions & export bans can disrupt supply.</div>
+          </div>
+        </div>
+        <div class="card-back">
+          <em>Mitigation:</em> Diversifying suppliers & strategic stockpiling.
+        </div>
+      </div>
+    </div>
+
+    <!-- Risk Card 2 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="risk-number">🌐 Risk #2</div>
+          <div class="risk-details">
+            <div class="risk-title"><strong>Global Dependencies</strong></div>
+            <div class="risk-description">Single-source suppliers like TSMC and ASML increase vulnerability.</div>
+          </div>
+        </div>
+        <div class="card-back">
+          <em>Mitigation:</em> Expanding investments in alternatives and building fabs at home, rather than outsourcing.
+        </div>
+      </div>
+    </div>
+
+    <!-- Risk Card 3 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="risk-number">⚠️ Risk #3</div>
+          <div class="risk-details">
+            <div class="risk-title"><strong>Unexpected Demand Surges</strong></div>
+            <div class="risk-description">Sudden spikes lead to shortages and long lead times.</div>
+          </div>
+        </div>
+        <div class="card-back">
+          <em>Mitigation:</em> Better forecasting with AI & flexible capacity planning.
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="section-title">Fun Facts</div>
+<p class="instruction">Scroll over cards to learn more</p>
+<div class="card-container">
+  <!-- Fun Fact Card 1: Remains unchanged -->
+  <div class="card">
+    <div class="card-inner">
+      <div class="card-front">
+        💰 Cost
+      </div>
+      <div class="card-back">
+        <strong>Massive Investment</strong><br><br>
+        75% of fab costs are on advanced equipment!<br>
+        Costs can reach $4B per fab.
+      </div>
+    </div>
+  </div>
+
+  <!-- Fun Fact Card 2: Updated with AI & IoT insights -->
+  <div class="card">
+    <div class="card-inner">
+      <div class="card-front">
+        🤖 Smart Manufacturing
+      </div>
+      <div class="card-back">
+        <strong>AI Revolution</strong><br><br>
+        AI driven algorithms and real time sensor data are transforming chip fabs, minimizing downtime and boosting yields.
+      </div>
+    </div>
+  </div>
+
+  <!-- Fun Fact Card 3: Updated with quantum computing insights -->
+  <div class="card">
+    <div class="card-inner">
+      <div class="card-front">
+        ⚛️ A Quantum Leap
+      </div>
+      <div class="card-back">
+        <strong>Quantum Computing Impact</strong><br><br>
+        Quantum simulations are revolutionizing materials used, enabling advanced chip design and optimal processes.
+      </div>
+    </div>
+  </div>
+</div>
     
 
-    <div class="section-title">Key Concepts</div>
-    <div class="card-container">
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">Idea 1</div>
-                <div class="card-back">More info about Idea 1</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">Idea 2</div>
-                <div class="card-back">More info about Idea 2</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">Idea 3</div>
-                <div class="card-back">More info about Idea 3</div>
-            </div>
-        </div>
-    </div>
+  <!-- Charts and Scripts -->
+  <script>
+    const parallax = document.querySelector('.parallax');
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20; 
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      parallax.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  </script>
 
-
-    <div class="chart-container">
-        <canvas id="operationsChart1"></canvas>
-    </div>
-
-
-    <div class="section-title">Advanced Strategies</div>
-    <div class="card-container">
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">Strategy 1</div>
-                <div class="card-back">More info about Strategy 1</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">Strategy 2</div>
-                <div class="card-back">More info about Strategy 2</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">Strategy 3</div>
-                <div class="card-back">More info about Strategy 3</div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="chart-container">
-        <canvas id="operationsChart2"></canvas>
-    </div>
-
-    <script>
-        const parallax = document.querySelector('.parallax');
-
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 20; // Adjust the multiplier for sensitivity
-            const y = (e.clientY / window.innerHeight - 0.5) * 20;
-            parallax.style.transform = `translate(${x}px, ${y}px)`;
-        });
-
-        const ctx1 = document.getElementById('operationsChart1').getContext('2d');
-        new Chart(ctx1, {
-            type: 'bar',
-            data: {
-                labels: ['Manufacturing', 'Healthcare', 'Retail', 'Logistics', 'Technology'],
-                datasets: [{
-                    label: 'Importance of Operations Management',
-                    data: [90, 80, 70, 85, 75],
-                    backgroundColor: ['#3498db', '#2ecc71', '#e74c3c', '#f1c40f', '#9b59b6']
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { 
-                        beginAtZero: true,
-                        ticks: {
-                            color: '#FFFFFF', 
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            }
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: '#FFFFFF', 
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: '#FFFFFF', 
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        const ctx2 = document.getElementById('operationsChart2').getContext('2d');
-        new Chart(ctx2, {
-            type: 'line',
-            data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                datasets: [{
-                    label: 'Performance Over Time',
-                    data: [65, 75, 80, 90],
-                    borderColor: '#3498db',
-                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { 
-                        beginAtZero: true,
-                        ticks: {
-                            color: '#FFFFFF', 
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            }
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: '#FFFFFF', 
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: '#FFFFFF',
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
+  <!-- Footer -->
+  <footer>
+    Stylized with the help of ChatGPT, hosted by Github, background image by Ant Rozetsky (Unsplash)
+  </footer>
 </body>
 </html>
