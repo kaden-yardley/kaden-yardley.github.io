@@ -2,56 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Operations Management Project</title>
-  <!-- Google Fonts: Open Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    /* Global Styles */
     body {
       font-family: 'Open Sans', sans-serif;
       margin: 0;
-      padding: 0 0 60px 0; 
+      padding: 0 0 55px 0; 
       background-color: transparent;
       color: #ffffff;
       text-align: center;
       overflow-x: hidden;
     }
-
-
-    .instruction {
-      font-size: 0.9em;
+    .instruction-box {
+      font-size: 0.85em;
+      font-family: 'Open Sans', sans-serif;
       color: #ffffff;
-      margin: 10px 0 20px;
+      margin: 15px 0 25px;
       position: relative;
       z-index: 1;
     }
-
-
     .research-button-container {
-      margin: 20px;
+      margin: 25px;
+      font-family: 'Open Sans', sans-serif;
       position: relative;
       z-index: 2;
     }
-
     .research-button {
       background-color: #3498db;
+      font-family: 'Open Sans', sans-serif;
       color: #ffffff;
-      padding: 10px 20px;
+      padding: 12px 20px;
       text-decoration: none;
       border-radius: 5px;
       font-size: 16px;
       font-weight: 600;
       transition: background-color 0.3s ease;
     }
-
     .research-button:hover {
+      font-family: 'Open Sans', sans-serif;
       background-color: #2980b9;
     }
-
     .parallax-container {
+      font-family: 'Open Sans', sans-serif;
       position: fixed;
       top: 0;
       left: 0;
@@ -60,8 +55,8 @@
       z-index: -1;
       overflow: hidden;
     }
-
     .parallax {
+      font-family: 'Open Sans', sans-serif;
       background: url('https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center;
       background-size: cover;
       width: 100%;
@@ -71,16 +66,16 @@
       left: 0;
       transition: transform 0.1s ease-out;
     }
-
     .title {
+      font-family: 'Open Sans', sans-serif;
       margin: 20px 0;
       font-size: 2em;
       color: #ffffff;
       position: relative;
       z-index: 1;
     }
-
     .section-title {
+      font-family: 'Open Sans', sans-serif;
       font-size: 1.5em;
       color: #ffffff;
       margin-top: 40px;
@@ -94,8 +89,8 @@
       padding: 10px;
       border-radius: 5px;
     }
-
     .card-container {
+      font-family: 'Open Sans', sans-serif;
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -104,15 +99,15 @@
       position: relative;
       z-index: 1;
     }
-
     .card {
+      font-family: 'Open Sans', sans-serif;
       width: 200px;
       height: 250px;
       perspective: 1000px;
       position: relative;
     }
-
     .card-inner {
+      font-family: 'Open Sans', sans-serif;
       width: 100%;
       height: 100%;
       position: relative;
@@ -121,12 +116,12 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
       border-radius: 10px;
     }
-
     .card:hover .card-inner {
+      font-family: 'Open Sans', sans-serif;
       transform: rotateY(180deg);
     }
-
     .card-front, .card-back {
+      font-family: 'Open Sans', sans-serif;
       position: absolute;
       width: 100%;
       height: 100%;
@@ -135,22 +130,20 @@
       justify-content: center;
       align-items: center;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
       padding: 10px;
       box-sizing: border-box;
       text-align: center;
       font-size: 18px;
     }
-
     .card-front {
-      background-color: #3498db;
+      background-color: #1f8fd9;
       font-weight: bold;
       color: #ffffff;
       flex-direction: column;
     }
-
     .card-back {
-      background-color: #2ecc71;
+      background-color: #20b55f;
       transform: rotateY(180deg);
       font-size: 16px;
       display: flex;
@@ -159,42 +152,34 @@
       justify-content: center;
       color: #ffffff;
     }
-
-    /* Risk Card Specific Styles */
     .card-front .risk-number {
       font-size: 1.2em;
       font-weight: bold;
       margin-bottom: 5px;
     }
-
     .card-front .risk-details {
       font-size: 0.8em;
       line-height: 1.2;
     }
-
     .card-front .risk-title {
       font-size: 0.9em;
     }
-
     .card-front .risk-description {
       font-size: 0.8em;
       margin-top: 5px;
-      color: #f0f0f0;
+      color: #000000;
     }
-
-
     .chart-container {
+      background-color: rgba(254, 254, 254, 0.75);
       position: relative;
       max-width: 600px;
       margin: 20px auto;
       padding: 20px;
-      background-color: rgba(255, 255, 255, 0.8);
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     }
-    
     footer {
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.75);
       color: #fff;
       padding: 20px 0;
       position: fixed;
@@ -207,9 +192,7 @@
   </style>
 </head>
 <body>
-
-
-
+  <div>
   <div class="parallax-container">
     <div class="parallax"></div>
   </div>
@@ -220,11 +203,9 @@
       View Research
     </a>
   </div>
-
 <div class="section-title">Semiconductor Manufacturing Process</div>
-<p class="instruction">Scroll over cards to learn more</p>
+<p class="instruction-box">Scroll over cards to learn more</p>
 <div class="card-container">
-  <!-- Fab Stage Card with Lithography -->
   <div class="card">
     <div class="card-inner">
       <div class="card-front">
@@ -236,8 +217,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Updated Probe Card -->
   <div class="card">
     <div class="card-inner">
       <div class="card-front">
@@ -249,8 +228,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Updated Package Card -->
   <div class="card">
     <div class="card-inner">
       <div class="card-front">
@@ -262,8 +239,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Final Test Card remains unchanged -->
   <div class="card">
     <div class="card-inner">
       <div class="card-front">
@@ -277,11 +252,10 @@
     </div>
   </div>
 </div>
-
+    
   <div class="section-title">Supply Chain & Risk Management</div>
       <p class="instruction">Scroll over cards to learn more</p>
   <div class="card-container">
-    <!-- Risk Card 1 -->
     <div class="card">
       <div class="card-inner">
         <div class="card-front">
@@ -296,8 +270,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Risk Card 2 -->
     <div class="card">
       <div class="card-inner">
         <div class="card-front">
@@ -308,12 +280,10 @@
           </div>
         </div>
         <div class="card-back">
-          <em>Mitigation:</em> Expanding investments in alternatives and building fabs at home, rather than outsourcing.
+          Mitigation: Expanding investments in alternatives and building fabs at home, rather than outsourcing.
         </div>
       </div>
     </div>
-
-    <!-- Risk Card 3 -->
     <div class="card">
       <div class="card-inner">
         <div class="card-front">
@@ -324,70 +294,60 @@
           </div>
         </div>
         <div class="card-back">
-          <em>Mitigation:</em> Better forecasting with AI & flexible capacity planning.
+          Mitigation: Better forecasting with AI & flexible capacity planning.
         </div>
       </div>
     </div>
   </div>
-
 <div class="section-title">Fun Facts</div>
 <p class="instruction">Scroll over cards to learn more</p>
 <div class="card-container">
-  <!-- Fun Fact Card 1: Remains unchanged -->
   <div class="card">
     <div class="card-inner">
       <div class="card-front">
         💰 Cost
       </div>
       <div class="card-back">
-        <strong>Massive Investment</strong><br><br>
+        <strong>Massive Investment</strong><br>
         75% of fab costs are on advanced equipment!<br>
         Costs can reach $4B per fab.
       </div>
     </div>
   </div>
-
-  <!-- Fun Fact Card 2: Updated with AI & IoT insights -->
   <div class="card">
     <div class="card-inner">
       <div class="card-front">
         🤖 Smart Manufacturing
       </div>
       <div class="card-back">
-        <strong>AI Revolution</strong><br><br>
+        <strong>AI Revolution</strong><br>
         AI driven algorithms and real time sensor data are transforming chip fabs, minimizing downtime and boosting yields.
       </div>
     </div>
   </div>
-
-  <!-- Fun Fact Card 3: Updated with quantum computing insights -->
   <div class="card">
     <div class="card-inner">
       <div class="card-front">
         ⚛️ A Quantum Leap
       </div>
       <div class="card-back">
-        <strong>Quantum Computing Impact</strong><br><br>
+        <strong>Quantum Computing Impact</strong><br>
         Quantum simulations are revolutionizing materials used, enabling advanced chip design and optimal processes.
       </div>
     </div>
   </div>
 </div>
-    
-
-  <!-- Charts and Scripts -->
   <script>
     const parallax = document.querySelector('.parallax');
     document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20; 
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      const x = (e.clientX / window.innerWidth - 0.5) * 25; 
+      const y = (e.clientY / window.innerHeight - 0.5) * 25;
       parallax.style.transform = `translate(${x}px, ${y}px)`;
     });
   </script>
-
-  <!-- Footer -->
   <footer>
-    Stylized with the help of ChatGPT, hosted by Github, background image by Ant Rozetsky (Unsplash)
+  Hosted by Github, background image by Ant Rozetsky (Unsplash)
   </footer>
+</div>
 </body>
 </html>
